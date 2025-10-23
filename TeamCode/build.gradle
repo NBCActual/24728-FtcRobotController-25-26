@@ -19,10 +19,24 @@ android {
     namespace = 'org.firstinspires.ftc.teamcode'
 
     packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/*.so']
+        }
         jniLibs.useLegacyPackaging true
     }
 }
 
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+    maven {
+        url "https://repo.dairy.foundation/snapshots"
+    }
+}
+
 dependencies {
+    implementation "org.solverslib:core:SNAPSHOT-7cdcc66" // core
+    implementation "org.solverslib:pedroPathing:SNAPSHOT-7cdcc66" // pedroPathing
     implementation project(':FtcRobotController')
 }
