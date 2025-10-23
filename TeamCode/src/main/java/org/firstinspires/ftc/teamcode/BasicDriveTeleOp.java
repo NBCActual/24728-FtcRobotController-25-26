@@ -1,20 +1,39 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.seattlesolvers.solverslib.command.CommandOpMode;
+import com.seattlesolvers.solverslib.command.button.Button;
+import com.seattlesolvers.solverslib.command.button.GamepadButton;
 import com.seattlesolvers.solverslib.drivebase.MecanumDrive;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
+import com.seattlesolvers.solverslib.gamepad.GamepadKeys;
 import com.seattlesolvers.solverslib.hardware.RevIMU;
 import com.seattlesolvers.solverslib.hardware.motors.Motor;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
-public class BasicDriveTeleOp extends LinearOpMode {
+public class BasicDriveTeleOp extends CommandOpMode {
 
     // This variable determines whether the following program
     // uses field-centric or robot-centric driving styles. The
     // differences between them can be read here in the docs:
     // https://docs.ftclib.org/ftclib/features/drivebases#control-scheme
     static final boolean FIELD_CENTRIC = false;
+
+    private GamepadEx driverOp;
+    private LauncherSubsystem launcherSubsystem;
+    private LaunchCommand launchCommand;
+    private Button launchButton;
+
+    @Override
+    public void initialize() {
+        launcherSubsystem = new LauncherSubsystem(hardwareMap, "launcherMotor");
+        launchCommand = new LaunchCommand(launcherSubsystem);
+
+        driverOp = new GamepadEx(gamepad1);
+
+        launchButton = (new GamepadButton(driverOp, GamepadKeys.Button.A))
+                .whenPressed(launchCommand);
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -27,11 +46,12 @@ public class BasicDriveTeleOp extends LinearOpMode {
                 new Motor(hardwareMap, "backRight")
         );
 
+
         // This is the built-in IMU in the REV hub.
         // We're initializing it by its default parameters
         // and name in the config ('imu'). The orientation
         // of the hub is important. Below is a model
-        // of the REV Hub and the orientation axes for the IMU.
+        // of the REV H ub and the orientation axes for the IMU.
         //
         //                           | Z axis
         //                           |
@@ -48,9 +68,6 @@ public class BasicDriveTeleOp extends LinearOpMode {
 
         RevIMU imu = new RevIMU(hardwareMap);
         imu.init();
-
-        // the extended gamepad object
-        GamepadEx driverOp = new GamepadEx(gamepad1);
 
         waitForStart();
 
@@ -113,7 +130,6 @@ public class BasicDriveTeleOp extends LinearOpMode {
                         false
                 );
             }
-
         }
     }
 }
