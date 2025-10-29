@@ -108,6 +108,10 @@ public class RevBHIMU extends GyroEx {
         //return revIMU.getAngularOrientation().firstAngle * multiplier;
     }
 
+    public Rotation2d getRotation2dHeading() {
+        return new Rotation2d(Math.toRadians(getHeading()));
+    }
+
     /**
      * @return X, Y, Z angles of gyro
      */

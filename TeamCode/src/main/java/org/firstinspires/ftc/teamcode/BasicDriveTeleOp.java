@@ -1,50 +1,31 @@
 package org.firstinspires.ftc.teamcode;
 
+import androidx.annotation.NonNull;
+
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.seattlesolvers.solverslib.command.CommandOpMode;
 import com.seattlesolvers.solverslib.drivebase.MecanumDrive;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
-import com.seattlesolvers.solverslib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
 
-import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-@TeleOp
+@TeleOp(name = "25-26 Basic Drive TeleOp", group = "TeleOp")
 public class BasicDriveTeleOp extends CommandOpMode {
-
-    // This variable determines whether the following program
-    // uses field-centric or robot-centric driving styles. The
-    // differences between them can be read here in the docs:
-    // https://docs.ftclib.org/ftclib/features/drivebases#control-scheme
 
     @Override
     public void initialize() {
-
-
+        // Initialization code can go here if needed
     }
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         GamepadEx driverOp = new GamepadEx(gamepad1);
-        SensorRevColorV3 colorSensor = new SensorRevColorV3(hardwareMap, ConfigNames.ColorSensor);
-        MotorEx frontLeft = new MotorEx(hardwareMap, ConfigNames.FrontLeftDriveMotor);
-        MotorEx frontRight = new MotorEx(hardwareMap, ConfigNames.FrontRightDriveMotor);
-        MotorEx rearLeft = new MotorEx(hardwareMap, ConfigNames.RearLeftDriveMotor);
-        MotorEx rearRight = new MotorEx(hardwareMap, ConfigNames.RearRightDriveMotor);
-
-        // constructor takes in frontLeft, frontRight, backLeft, backRight motors
-        // IN THAT ORDER
-        MecanumDrive drive = new MecanumDrive(
-                frontLeft,
-                frontRight,
-                rearLeft,
-                rearRight
-        );
+        SensorRevColorV3 colorSensor = new SensorRevColorV3(hardwareMap, Constants.ColorSensor);
+        MecanumDrive drive = getMecanumDrive();
 
         // This is the built-in IMU in the REV hub.
         // We're initializing it by its default parameters
@@ -102,5 +83,22 @@ public class BasicDriveTeleOp extends CommandOpMode {
             telemetry.addData("Distance (mm)", colorDistance);
             telemetry.update();
         }
+    }
+
+    @NonNull
+    private MecanumDrive getMecanumDrive() {
+        MotorEx frontLeft = new MotorEx(hardwareMap, Constants.FrontLeftDriveMotor);
+        MotorEx frontRight = new MotorEx(hardwareMap, Constants.FrontRightDriveMotor);
+        MotorEx rearLeft = new MotorEx(hardwareMap, Constants.RearLeftDriveMotor);
+        MotorEx rearRight = new MotorEx(hardwareMap, Constants.RearRightDriveMotor);
+
+        // constructor takes in frontLeft, frontRight, backLeft, backRight motors
+        // IN THAT ORDER
+        return new MecanumDrive(
+                frontLeft,
+                frontRight,
+                rearLeft,
+                rearRight
+        );
     }
 }
