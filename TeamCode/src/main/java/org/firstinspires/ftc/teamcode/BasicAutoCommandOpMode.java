@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.bylazar.configurables.annotations.Configurable;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierCurve;
 import com.pedropathing.geometry.BezierLine;
@@ -15,12 +16,14 @@ import com.seattlesolvers.solverslib.pedroCommand.FollowPathCommand;
 import com.seattlesolvers.solverslib.util.TelemetryData;
 
 @Autonomous(name = "25-26 Auto Command OpMode", group = "Autonomous")
+@Configurable // Panels
 public class BasicAutoCommandOpMode extends CommandOpMode {
     private Follower follower;
     TelemetryData telemetryData = new TelemetryData(telemetry);
 
     // Poses
-    private final Pose startPose = new Pose(9, 111, Math.toRadians(-90));
+    private final Pose startPose = new Pose(72, 8, Math.toRadians(90));
+
     private final Pose scorePose = new Pose(16, 128, Math.toRadians(-45));
     private final Pose pickup1Pose = new Pose(30, 121, Math.toRadians(0));
     private final Pose pickup2Pose = new Pose(30, 131, Math.toRadians(0));

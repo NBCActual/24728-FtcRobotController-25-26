@@ -19,6 +19,9 @@ android {
     }
     compileSdk 34
 
+    dependencies {
+        implementation "com.bylazar:fullpanels:1.0.4"
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
