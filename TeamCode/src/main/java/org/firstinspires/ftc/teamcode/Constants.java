@@ -22,6 +22,8 @@ public class Constants {
 
     public static String ColorSensor = "front_color_sensor";
 
+    public static String ExpansionMotor0 = "expansion_motor_zero";
+
     public static FollowerConstants followerConstants = new FollowerConstants()
             .centripetalScaling(0.005)
             .forwardZeroPowerAcceleration(-41.278)

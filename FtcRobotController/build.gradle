@@ -20,7 +20,7 @@ android {
     compileSdk 34
 
     dependencies {
-        implementation "com.bylazar:fullpanels:1.0.4"
+        implementation "com.bylazar:fullpanels:1.0.8"
     }
 
     compileOptions {
