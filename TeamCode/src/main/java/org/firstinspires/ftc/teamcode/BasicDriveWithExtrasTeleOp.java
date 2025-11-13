@@ -48,7 +48,7 @@ public class BasicDriveWithExtrasTeleOp extends CommandOpMode {
         );
 
         sensorSubsystem = new SensorSubsystem(hardwareMap);
-        launchSubsystem = new VerticalLaunchSubsystem(hardwareMap, Constants.ExpansionMotor0);
+        launchSubsystem = new VerticalLaunchSubsystem(hardwareMap, Constants.ExpansionMotor0, Constants.Servo1);
         intakeSubsystem = new IntakeSubsystem(hardwareMap, Constants.ExpansionMotor1);
 
         crServo = new CRServo(hardwareMap, Constants.Servo1);

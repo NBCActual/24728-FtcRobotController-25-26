@@ -20,6 +20,10 @@ public class VerticalLaunchSubsystem extends SubsystemBase {
         this(hMap, name, null, 1.0, 1.0, 0.75);
     }
 
+    public VerticalLaunchSubsystem(final HardwareMap hMap, final String name, final String guideMotorName) {
+        this(hMap, name, guideMotorName, 1.0, 1.0, 0.75);
+    }
+
     public VerticalLaunchSubsystem(final HardwareMap hMap, final String motorName, String guidMotorName, double launchPower, double guideMotorPowerFactor, double reversePower) {
         motorRotation = new MotorEx(hMap, motorName);
         if(guidMotorName != null) {
