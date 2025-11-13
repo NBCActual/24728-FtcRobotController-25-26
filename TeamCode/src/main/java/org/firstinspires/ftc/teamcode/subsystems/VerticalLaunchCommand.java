@@ -2,11 +2,11 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.seattlesolvers.solverslib.command.CommandBase;
 
-public class LaunchCommand extends CommandBase {
+public class VerticalLaunchCommand extends CommandBase {
     // The subsystem the command runs on
-    private final LaunchMotorSubsystem m_launchSubsystem;
+    private final VerticalLaunchSubsystem m_launchSubsystem;
 
-    public LaunchCommand(LaunchMotorSubsystem subsystem) {
+    public VerticalLaunchCommand(VerticalLaunchSubsystem subsystem) {
         m_launchSubsystem = subsystem;
         addRequirements(m_launchSubsystem);
     }

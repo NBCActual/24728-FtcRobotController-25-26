@@ -14,7 +14,7 @@ import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
 
 import org.firstinspires.ftc.teamcode.subsystems.DriveCommand;
 import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.LaunchMotorSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.VerticalLaunchSubsystem;
 
 
 @TeleOp(name = "25-26 Basic Drive TeleOp", group = "TeleOp")
@@ -25,7 +25,7 @@ public class BasicDriveTeleOp extends CommandOpMode {
     private GamepadEx driverOp;
     private DriveSubsystem m_drive;
     private DriveCommand m_driveCommand;
-    private LaunchMotorSubsystem launchSubsystem;
+    private VerticalLaunchSubsystem launchSubsystem;
     private Motor frontLeft, frontRight, rearLeft, rearRight;
     private RevBHIMU imu;
 
@@ -55,7 +55,7 @@ public class BasicDriveTeleOp extends CommandOpMode {
 
         m_driveCommand = new DriveCommand(m_drive, () -> driverOp.getLeftX(), () -> -driverOp.getLeftY(), () -> -driverOp.getRightX());
 
-        launchSubsystem = new LaunchMotorSubsystem(hardwareMap, Constants.ExpansionMotor0);
+        launchSubsystem = new VerticalLaunchSubsystem(hardwareMap, Constants.ExpansionMotor0);
 
         driverOp.getGamepadButton(GamepadKeys.Button.A)
                 .whenHeld(new RunCommand(launchSubsystem::launch, launchSubsystem))
